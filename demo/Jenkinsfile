@@ -5,7 +5,7 @@ git credentialsId: 'git_creds2', url: 'https://github.com/johnsoncls2019/new_spr
 stage ('Mvn package') {
 def mvnHome = tool name: 'localMaven', type: 'maven' 
 def mvnCMD = "${mvnHome}/usr/bin/mvn"
-sh "mvn clean package"
+sh "mvn clean install spring-boot:repackage"
 }
 stage ('Build Docker image') {
 sh "docker build .--tag springbootnew"
